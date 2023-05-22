@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      button {
+        position: fixed;
+        z-index: 300;
+      }
+      .nextPageBut {
+        bottom: 8px;
+        opacity: 0;
+        z-index: 400;
+        font-size: 35px;
+      }
+      @keyframes buttonSlide {
+        0% {top: 8px}
+        100% {top: 890px}
+      }
+      @keyframes wings {
+        0% {opacity: 0}
+        100% {opacity: 1}
+      }
+      @keyframes elevatorDoorL {
+        0% {opacity: 0; left: -1500px}
+        15% {opacity: 1}
+        100% {left: 0px}
+      }
+      @keyframes elevatorDoorR {
+        0% {opacity: 0; left: 3000px}
+        15% {opacity: 1}
+        100% {left: 1500px}
+      }
+
+    </style>
+  </head>
+  <body>
+    <button class="transitionClass" id="startTransitionButId" onclick="startTransition()">Move towards next page</button>
+    <button class="nextPageBut" id="nextPageButId" onclick="nextPage()">Next >|< page</button>
+    <div id="imgs">This is the div</div>
+    <script>
+      const imgHeight = window.innerHeight * 2;
+      let firstTransition = true;
+
+      const fnMoving = [
+        'AlphaToWaveSynth_Pic_1.png',
+        'from_manga_Vagabond_Chapter245.png',
+        'Mix_CtoD_K.png',
+        'Mix_Misc_B.png',
+        'Moire1.png',
+        'Moire3.png',
+        'Moire7.png',
+        'Moire8.png',
+        'Moire18.png',
+        'Moire23.png',
+        'Moire24.png',
+        'Screen Shot 2020-11-22 at 9.39.08 PM.png',
+        'Screen Shot 2021-01-09 at 12.49.43 PM.png',
+        'Screen Shot 2021-06-15 at 4.43.37 PM.png',
+        'Screen Shot 2021-08-14 at 10.17.51 PM.png',
+        'Screen Shot 2022-01-10 at 8.46.40 PM.png',
+        'Screen Shot 2022-02-23 at 10.56.19 AM.png',
+        'Screen Shot 2022-03-23 at 10.09.05 AM.png',
+        'Screen Shot 2022-04-09 at 10.39.54 AM.png',
+        'Screen Shot 2022-04-10 at 4.48.28 PM.png',
+        'Screen Shot 2022-05-03 at 3.40.24 PM.png',
+        'Screen Shot 2022-05-05 at 11.14.55 AM.png',
+        'Screen Shot 2022-05-05 at 11.18.36 AM.png',
+        'Screen Shot 2022-05-16 at 7.05.16 PM.png',
+        'Screen Shot 2022-05-16 at 7.14.50 PM.png',
+        'Screen Shot 2022-05-18 at 4.59.18 PM.png',
+        'Screen Shot 2022-05-27 at 1.14.13 PM.png',
+        'Screen Shot 2022-05-27 at 1.15.24 PM.png',
+        'Screen Shot 2022-05-27 at 1.20.10 PM.png',
+        'Screen Shot 2022-05-29 at 2.29.45 PM.png',
+        'Screen Shot 2022-05-29 at 3.15.06 PM.png',
+        'Screen Shot 2022-05-29 at 3.17.21 PM.png',
+        'Screen Shot 2022-07-05 at 8.12.59 AM.png',
+        'Screen Shot 2022-07-05 at 8.16.49 AM.png',
+        'Screen Shot 2022-07-18 at 2.19.25 PM.png',
+        'Screen Shot 2022-07-31 at 8.55.59 PM.png',
+        'Screen Shot 2022-08-16 at 1.10.03 PM.png',
+        'Screen Shot 2022-08-16 at 4.05.26 PM.png',
+        'Screen Shot 2022-10-05 at 2.39.31 PM.png',
+        'Screen Shot 2022-10-05 at 2.39.46 PM.png',
+        'Screen Shot 2022-10-05 at 2.40.39 PM.png',
+        'Screen Shot 2022-10-05 at 2.40.59 PM.png',
+        'Screen Shot 2022-10-05 at 2.42.44 PM.png',
+        'Screen Shot 2022-10-05 at 2.43.06 PM.png',
+        'Screen Shot 2022-10-05 at 2.43.18 PM.png',
+        'Screen Shot 2022-10-05 at 2.44.37 PM.png',
+        'Screen Shot 2022-10-05 at 2.45.53 PM.png',
+        'Screen Shot 2022-10-25 at 11.39.10 PM.png',
+        'Screen Shot 2022-10-25 at 11.41.16 PM.png',
+        'Screen Shot 2022-10-25 at 11.42.18 PM.png',
+        'Screen Shot 2022-10-26 at 1.17.24 PM.png',
+        'Screen Shot 2022-10-26 at 1.35.13 PM.png',
+        'Screen Shot 2022-10-26 at 9.12.13 PM.png',
+        'Screen Shot 2022-11-16 at 12.31.27 PM.png',
+        'Screen Shot 2022-11-16 at 12.32.31 PM.png',
+        'Screen Shot 2022-11-16 at 12.34.26 PM.png',
+        'Screen Shot 2022-11-17 at 1.01.23 AM.png',
+        'Screen Shot 2022-11-17 at 1.26.22 AM.png',
+        'Screen Shot 2022-11-17 at 1.33.55 AM.png',
+        'Screen Shot 2022-11-22 at 11.20.32 PM.png',
+        'Screen Shot 2022-11-22 at 11.22.15 PM.png',
+        'Screen Shot 2022-11-22 at 11.24.37 PM.png',
+        'Screen Shot 2022-12-21 at 8.54.27 PM.png',
+        'Screen Shot 2022-12-21 at 8.55.54 PM.png',
+        'Screen Shot 2022-12-21 at 9.18.26 PM.png',
+        'Screen Shot 2022-12-21 at 9.24.21 PM.png',
+        'Screen Shot 2022-12-21 at 9.25.45 PM.png',
+        'Screen Shot 2022-12-21 at 9.25.58 PM.png',
+        'Screen Shot 2022-12-21 at 9.26.09 PM.png',
+        'Screen Shot 2022-12-21 at 9.26.30 PM.png',
+        'Screen Shot 2022-12-21 at 9.26.57 PM.png',
+        'Screen Shot 2022-12-21 at 9.29.43 PM.png',
+        'Screen Shot 2023-01-30 at 1.12.00 AM.png',
+        'Screen Shot 2023-02-01 at 4.36.23 PM.png',
+        'Screen Shot 2023-03-01 at 10.23.27 PM.png',
+        'Screen Shot 2023-03-01 at 10.40.42 PM.png',
+        'Screen Shot 2023-03-01 at 10.57.27 PM.png',
+        'Screen Shot 2023-03-01 at 10.57.53 PM.png',
+        'Screen Shot 2023-03-01 at 10.58.51 PM.png',
+        'Screen Shot 2023-03-03 at 6.28.17 PM.png',
+        'wheres the spirit.jpg'
+      ];
+
+      fnMovingScrambled = fnMoving.sort((a, b) => 0.5 - Math.random());
+
+      let absPathsMoving = [];
+
+      fnMovingScrambled.forEach(function(filename) {
+        absPathsMoving.push('/Users/DJMac/Documents/MalinowskiDJMusic/MyCompositions/NewIdeas/2023Spring/elevator/elevatorCode/images/moving/' + filename);
+      })
+
+      const lenMoving = absPathsMoving.length;
+
+      let imgInd = 0;
+      let imgTopSum = 0;
+      const blendModes = ['multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity'];
+      let blendMode = blendModes[Math.floor(Math.random() * blendModes.length)];
+
+      absPathsMoving.forEach(function(absPath) {
+        const element = document.createElement('img');
+        const multMax = 0.8;
+        const multMin = 0.6;
+        const imgTopMult = Math.random() * (multMax - multMin) + multMin;
+        const imgTop = imgHeight * 0.6;
+        element.style = 'height: ' + imgHeight + 'px; position: absolute; top: ' + imgTopSum + 'px; opacity: 1; mix-blend-mode: ' + blendMode + ';';
+        element.src = absPath;
+        imgs.appendChild(element);
+        imgInd = imgInd + 1;
+        imgTopSum = imgTopSum + imgTop;
+      })
+
+      const startTransition = function() {
+        const startBut = document.getElementById("startTransitionButId");
+        startBut.style = "top: 890px; animation-name: buttonSlide; animation-duration: 30s;";
+        const nextPageBut = document.getElementById("nextPageButId");
+        nextPageBut.style = "bottom: 8px; opacity: 1; animation-name: wings; animation-duration: 100s";
+        
+        const elemUrl0 = document.createElement('a');
+        elemUrl0.href = "https://soundcloud.com/djmalinowski/xfadeinstructions_c_compositespeeds/s-J184MThoUCa?si=1104b385c9af4d559c99a7b7c5629138";
+        elemUrl0.innerText = "https://soundcloud.com/djmalinowski/xfadeinstructions_c_compositespeeds/s-J184MThoUCa?si=1104b385c9af4d559c99a7b7c5629138";
+        elemUrl0.target = "_blank";
+        elemUrl0.style = "font-size: 35px; position: fixed; top: 222px;";
+        document.body.appendChild(elemUrl0);
+
+        const elemUrl1 = document.createElement('a');
+        elemUrl1.href = "https://www.youtube.com/watch?v=gsFDxyFrhjg";
+        elemUrl1.innerText = "https://www.youtube.com/watch?v=gsFDxyFrhjg";
+        elemUrl1.target = "_blank";
+        elemUrl1.style = "font-size: 35px; position: fixed; top: 444px;";
+        document.body.appendChild(elemUrl1);
+
+        const elemUrl2 = document.createElement('a');
+        elemUrl2.href = "https://www.youtube.com/watch?v=H76_uW1Fnso";
+        elemUrl2.innerText = "https://www.youtube.com/watch?v=H76_uW1Fnso";
+        elemUrl2.target = "_blank";
+        elemUrl2.style = "font-size: 35px; position: fixed; top: 666px;";
+        document.body.appendChild(elemUrl2);
+      }
+
+      const nextPage = function() {
+        console.log("nextPage button clicked");
+        let doorIndex = 0;
+        fnMoving.forEach(function(filename) {
+          const imgTop = imgHeight;
+          const elemWidth = 3000;
+          if(firstTransition == true) {
+            const elemWings = document.createElement('img');
+            elemWings.style = "z-index: 199; position: absolute; top: " + (imgTop * doorIndex * 1.5) + "px; width: " + elemWidth + "px; animation-name: wings; animation-duration: 95s;";
+            elemWings.src = "images/elevatorDoors/" + (["textbook_contents_1.png", "textbook_cover.png", "wings_source.png"][Math.floor(Math.random() * 3)]);
+            document.body.appendChild(elemWings);
+          };
+          const elemDivL = document.createElement('div');
+          const elemDivR = document.createElement('div');
+          const blendModeL = ["screen", "lighten", "hard-light", "difference"][3];
+          const blendModeR = ["screen", "lighten", "hard-light", "difference"][3];
+          elemDivL.class = "transitionClass";
+          elemDivR.class = "transitionClass";
+          elemDivL.style = "z-index: 200; mix-blend-mode: " + blendModeL + "; position: absolute; top: " + (imgTop * doorIndex) + "px; width: " + (elemWidth * 0.5) + "px; height: 2000px; left: 0px; background-image: url('images/elevatorDoors/underwater_1.png'); background-position: left top; background-size: 200%; animation-name: elevatorDoorL; animation-duration: 110s";
+          elemDivR.style = "z-index: 200; mix-blend-mode: " + blendModeR + "; position: absolute; top: " + (imgTop * doorIndex) + "px; width: " + (elemWidth * 0.5) + "px; height: 2000px; left: 750px; background-image: url('images/elevatorDoors/underwater_1.png'); background-position: right top; background-size: 200%; animation-name: elevatorDoorR; animation-duration: 110s";
+          document.body.appendChild(elemDivL);
+          document.body.appendChild(elemDivR);
+          doorIndex = doorIndex + 1;
+        })
+        if(firstTransition == true) {firstTransition = false};
+      }
+    </script>
+  </body>
+</html>
