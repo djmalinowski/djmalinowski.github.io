@@ -199,8 +199,8 @@
           const blendModeR = ["screen", "lighten", "hard-light", "difference"][3];
           elemDivL.class = "transitionClass";
           elemDivR.class = "transitionClass";
-          elemDivL.style = "z-index: 200; mix-blend-mode: " + blendModeL + "; position: absolute; top: " + (imgTop * doorIndex) + "px; width: " + (elemWidth * 0.5) + "px; height: 2000px; left: 0px; background-image: url('images/elevatorDoors/underwater_1.png'); background-position: left top; background-size: 200%; animation-name: elevatorDoorL; animation-duration: 110s";
-          elemDivR.style = "z-index: 200; mix-blend-mode: " + blendModeR + "; position: absolute; top: " + (imgTop * doorIndex) + "px; width: " + (elemWidth * 0.5) + "px; height: 2000px; left: 750px; background-image: url('images/elevatorDoors/underwater_1.png'); background-position: right top; background-size: 200%; animation-name: elevatorDoorR; animation-duration: 110s";
+          elemDivL.style = "z-index: 200; mix-blend-mode: " + blendModeL + "; position: absolute; top: " + (imgTop * doorIndex) + "px; width: " + (elemWidth * 0.5) + "px; height: 2000px; left: 0px; background-image: url('elevatorDoors/underwater_1.png'); background-position: left top; background-size: 200%; animation-name: elevatorDoorL; animation-duration: 110s";
+          elemDivR.style = "z-index: 200; mix-blend-mode: " + blendModeR + "; position: absolute; top: " + (imgTop * doorIndex) + "px; width: " + (elemWidth * 0.5) + "px; height: 2000px; left: 750px; background-image: url('elevatorDoors/underwater_1.png'); background-position: right top; background-size: 200%; animation-name: elevatorDoorR; animation-duration: 110s";
           document.body.appendChild(elemDivL);
           document.body.appendChild(elemDivR);
           doorIndex = doorIndex + 1;
