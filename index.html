@@ -130,7 +130,7 @@
       let absPathsMoving = [];
 
       fnMovingScrambled.forEach(function(filename) {
-        absPathsMoving.push('/Users/DJMac/Documents/MalinowskiDJMusic/MyCompositions/NewIdeas/2023Spring/elevator/elevatorCode/images/moving/' + filename);
+        absPathsMoving.push('moving/' + filename);
       })
 
       const lenMoving = absPathsMoving.length;
@@ -190,7 +190,7 @@
           if(firstTransition == true) {
             const elemWings = document.createElement('img');
             elemWings.style = "z-index: 199; position: absolute; top: " + (imgTop * doorIndex * 1.5) + "px; width: " + elemWidth + "px; animation-name: wings; animation-duration: 95s;";
-            elemWings.src = "images/elevatorDoors/" + (["textbook_contents_1.png", "textbook_cover.png", "wings_source.png"][Math.floor(Math.random() * 3)]);
+            elemWings.src = "elevatorDoors/" + (["textbook_contents_1.png", "textbook_cover.png", "wings_source.png"][Math.floor(Math.random() * 3)]);
             document.body.appendChild(elemWings);
           };
           const elemDivL = document.createElement('div');
