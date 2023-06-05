@@ -1,0 +1,268 @@
+<html>
+  <head>
+    <title>My YouTube links</title>
+    <style>
+      button {
+        position: fixed;
+        z-index: 300;
+      }
+
+      .stage0class {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        width: 1170px;
+        height: 600px;
+      }
+
+      video {
+        position: absolute;
+        opacity: 0.7;
+      }
+
+      a {
+        position: relative;
+        margin-top: 10px;
+        z-index: 100;
+        animation-name: fall;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        opacity: 1;
+      }
+      @keyframes fall {
+        0% {top: 0px; opacity: 0;}
+        50% {opacity: 0.04;}
+        100% {top: 300px; opacity: 0;}
+      }
+      @keyframes rise {
+        0% {top: 300px; opacity: 0;}
+        50% {opacity: 0.04;}
+        100% {top: 0px; opacity: 0;}
+      }
+      @keyframes sparkle {
+        0% {opacity: 0;}
+        50% {opacity: 0.04;}
+        100% {opacity: 0;}
+      }
+
+      .akeboshi {
+        position: absolute;
+        top: 100px;
+        left: 300px;
+        z-index: 100;
+        animation-name: fallAkeboshi;
+        animation-duration: 30s;
+        opacity: 1;
+      }
+      @keyframes fallAkeboshi {
+        0% {top: 0px; opacity: 0;}
+        35% {opacity: 0.05;}
+        75% {opacity: 0;}
+        100% {top: 300px; opacity: 0;}
+      }
+
+      p {
+        position: absolute;
+        top: 100px;
+        left: 50px;
+        width: 200px;
+        font-size: 18px;
+        z-index: 1;
+        opacity: 0.03;
+        color: red;
+      }
+
+      .youtubeScreenshot {
+        position: absolute;
+        left: 564px;
+        top: 55px;
+        height: 600px;
+        z-index: 0;
+        opacity: 0.2;
+        animation-name: fadeScreenshot;
+        animation-duration: 115s;
+        animation-iteration-count: infinite;
+      }
+      @keyframes fadeScreenshot {
+        0% {opacity: 0;}
+        25% {opacity: 0.05;}
+        50% {opacity: 0.2;}
+        75% {opacity: 0.05;}
+        100% {opacity: 0;}
+      }
+
+      @keyframes elevatorDoorL {
+        0% {opacity: 0; left: -750px}
+        15% {opacity: 1}
+        100% {left: 0px}
+      }
+      @keyframes elevatorDoorR {
+        0% {opacity: 0; left: 1500px}
+        15% {opacity: 1}
+        100% {left: 750px}
+      }
+
+      @keyframes screenFade {
+        0% {opacity: 0}
+        100% {opacity: 1}
+      }
+    </style>
+  </head>
+  <body>
+    <button class="transitionClass" onclick="nextPage()">Next >|< page</button>
+    <div class="stage0class" id="stage0id">
+      <video height="600px" autoplay muted loop="true">
+        <source src="youtubeLinks-track-assets/bkdimageSequenced_LoRes.mov" alt="Rhythmic video repeating webpage loading at various intuitive but solidified speeds.">
+      </video>
+      <p>There's a wind blowing through your skin. There's no whispers glowing intra-fading sips. Where's froggy flakes ships ornaments follow galaxy. Crispy chips Hocketing sharing Syllable apple. Attach gut</p>
+      <a class="akeboshi" href="https://www.youtube.com/watch?v=WqGOaOHu5uY">
+        <img src="youtubeLinks-track-assets/windByAkeboshi.png" alt="Wind By Akeboshi album cover in YouTube video playing that song." width="200">
+      </a>
+      <img class="youtubeScreenshot" id="youtubeScreenshotImage" src="youtubeLinks-track-assets/youtubeScreenshots/5rzIiF7LpPU.png">
+    </div>
+    <script>
+      const urlsFall = [
+        "https://www.youtube.com/watch?v=O0ET0aMjzjQ",
+        "https://www.youtube.com/watch?v=u9VMfdG873E",
+        "https://www.youtube.com/watch?v=O0ET0aMjzjQ",
+        "https://www.youtube.com/watch?v=u9VMfdG873E",
+        "https://www.youtube.com/watch?v=O0ET0aMjzjQ",
+        "https://www.youtube.com/watch?v=u9VMfdG873E",
+        "https://www.youtube.com/watch?v=O0ET0aMjzjQ",
+        "https://www.youtube.com/watch?v=u9VMfdG873E",
+        "https://www.youtube.com/watch?v=O0ET0aMjzjQ",
+        "https://www.youtube.com/watch?v=u9VMfdG873E",
+        "https://www.youtube.com/watch?v=O0ET0aMjzjQ",
+        "https://www.youtube.com/watch?v=u9VMfdG873E",
+        "https://www.youtube.com/watch?v=O0ET0aMjzjQ",
+        "https://www.youtube.com/watch?v=u9VMfdG873E",
+        "https://www.youtube.com/watch?v=O0ET0aMjzjQ",
+        "https://www.youtube.com/watch?v=u9VMfdG873E",
+        "https://www.youtube.com/watch?v=O0ET0aMjzjQ",
+        "https://www.youtube.com/watch?v=u9VMfdG873E",
+        "https://www.youtube.com/watch?v=kxuQzxoTzpM"
+      ];
+      const urlsRise = [
+        "https://www.youtube.com/watch?v=5rzIiF7LpPU",
+        "https://www.youtube.com/watch?v=nQoU_2ElF14",
+        "https://www.youtube.com/watch?v=5rzIiF7LpPU",
+        "https://www.youtube.com/watch?v=nQoU_2ElF14",
+        "https://www.youtube.com/watch?v=5rzIiF7LpPU",
+        "https://www.youtube.com/watch?v=nQoU_2ElF14",
+        "https://www.youtube.com/watch?v=5rzIiF7LpPU",
+        "https://www.youtube.com/watch?v=nQoU_2ElF14",
+        "https://www.youtube.com/watch?v=5rzIiF7LpPU",
+        "https://www.youtube.com/watch?v=nQoU_2ElF14",
+        "https://www.youtube.com/watch?v=5rzIiF7LpPU",
+        "https://www.youtube.com/watch?v=nQoU_2ElF14",
+        "https://www.youtube.com/watch?v=5rzIiF7LpPU",
+        "https://www.youtube.com/watch?v=nQoU_2ElF14",
+        "https://www.youtube.com/watch?v=5rzIiF7LpPU",
+        "https://www.youtube.com/watch?v=nQoU_2ElF14",
+        "https://www.youtube.com/watch?v=5rzIiF7LpPU",
+        "https://www.youtube.com/watch?v=nQoU_2ElF14",
+        "https://www.youtube.com/watch?v=4o3uYFQYALc"
+      ];
+      const urlsStatic = [
+        "https://www.youtube.com/watch?v=epwG5nEHbYg",
+        "https://www.youtube.com/watch?v=SaVcfHN7xE4",
+        "https://www.youtube.com/watch?v=Glrwf8rKBXw",
+        "https://www.youtube.com/watch?v=VGL3x3Cc1io",
+        "https://www.youtube.com/watch?v=hesv-etwK_o",
+        "https://www.youtube.com/watch?v=r-ZqYdw7f14",
+        "https://www.youtube.com/watch?v=1cZUD8_tir8&t=142s"
+      ];
+
+      const blendModes = ['multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity'];
+      let blendMode = blendModes[Math.floor(Math.random() * blendModes.length)];
+      document.getElementById("youtubeScreenshotImage").style = 'mix-blend-mode: ' + blendMode + ';';
+      
+      const maxFromTop = 20;
+      const maxFromLeft = 300;
+      const maxDur = 10;
+      const minDur = 2;
+      const staticMinFromTop = 100;
+      const staticMaxFromTop = 200;
+      urlsFall.forEach(function(url) {
+        const elemDiv = document.createElement('div');
+        elemDiv.style = "position: absolute; margin-left: 10px; margin-top: " + Math.floor(Math.random() * maxFromTop) + "px;";
+        const element = document.createElement('a');
+        element.innerText = url;
+        element.href = url;
+        element.addEventListener(
+          "mouseenter",
+          (event) => {
+            const fn = "youtubeLinks-track-assets/youtubeScreenshots/" + (url.substring(url.indexOf("watch?v=") + 8)) + "_" + (Math.floor(Math.random() * 3)) + ".png";
+            document.getElementById("youtubeScreenshotImage").src = fn;
+            blendMode = blendModes[Math.floor(Math.random() * blendModes.length)];
+            document.getElementById("youtubeScreenshotImage").style = 'mix-blend-mode: ' + blendMode + ';';
+          },
+          false
+        );
+        element.style = "animation-duration: " + ((Math.random() * (maxDur - minDur)) + minDur) + "s;";
+        elemDiv.appendChild(element);
+        document.getElementById('stage0id').appendChild(elemDiv);
+      });
+
+      urlsRise.forEach(function(url) {
+        const elemDiv = document.createElement('div');
+        elemDiv.style = "position: absolute; margin-left: 10px; margin-top: " + Math.floor(Math.random() * maxFromTop) + "px;";
+        const element = document.createElement('a');
+        element.innerText = url;
+        element.href = url;
+        element.addEventListener(
+          "mouseenter",
+          (event) => {
+            const fn = "youtubeLinks-track-assets/youtubeScreenshots/" + (url.substring(url.indexOf("watch?v=") + 8)) + "_" + (Math.floor(Math.random() * 3)) + ".png";
+            document.getElementById("youtubeScreenshotImage").src = fn;
+            blendMode = blendModes[Math.floor(Math.random() * blendModes.length)];
+            document.getElementById("youtubeScreenshotImage").style = 'mix-blend-mode: ' + blendMode + ';';
+          },
+          false
+        );
+        element.style = "animation-name: rise; animation-duration: " + ((Math.random() * (maxDur - minDur)) + minDur) + "s;";
+        elemDiv.appendChild(element);
+        document.getElementById('stage0id').appendChild(elemDiv);
+      });
+
+      urlsStatic.forEach(function(url) {
+        const elemDiv = document.createElement('div');
+        elemDiv.style = "position: absolute; margin-left: 10px; margin-top: " + (Math.floor(Math.random() * (staticMaxFromTop - staticMinFromTop)) + staticMinFromTop) + "px;";
+        const element = document.createElement('a');
+        element.innerText = url;
+        element.href = url;
+        element.style = "animation-name: sparkle; animation-duration: " + ((Math.random() * (maxDur - minDur)) + minDur) + "s; opacity: 0.1;";
+        elemDiv.appendChild(element);
+        document.getElementById('stage0id').appendChild(elemDiv);
+      });
+
+      let transitionStart = false;
+      const clearAllBehindScreen = function() {
+        document.getElementById('stage0id').remove();
+        console.log(document.body.children);
+      };
+      const nextPage = function() {
+        const elemWidth = 1500;
+        const elemDivL = document.createElement('div');
+        const elemDivR = document.createElement('div');
+        const blendModeL = ["screen", "lighten", "hard-light", "difference"][3];
+        const blendModeR = ["screen", "lighten", "hard-light", "difference"][3];
+        elemDivL.class = "transitionClass";
+        elemDivR.class = "transitionClass";
+        elemDivL.style = "z-index: 200; mix-blend-mode: " + blendModeL + "; position: absolute; top: 0; width: " + (elemWidth * 0.5) + "; height: 2000px; left: 0px; background-image: url('elevatorDoors/likeDrawn_0.png'); background-position: left top; background-size: " + ((Math.random() * (208 - 192)) + 192) + "%; animation-name: elevatorDoorL; animation-duration: 10s";
+        elemDivR.style = "z-index: 200; mix-blend-mode: " + blendModeR + "; position: absolute; top: 0; width: " + (elemWidth * 0.5) + "; height: 2000px; left: 750px; background-image: url('elevatorDoors/likeDrawn_0.png'); background-position: right top; background-size: " + ((Math.random() * (208 - 192)) + 192) + "%; animation-name: elevatorDoorR; animation-duration: 10s";
+        document.body.appendChild(elemDivL);
+        document.body.appendChild(elemDivR);
+        if (transitionStart === false) {
+          const elemScreen = document.createElement('div');
+          elemScreen.class = "transitionClass";
+          elemScreen.style = "z-index: 199; position: absolute; top: 0; left: 0; width: 1500px; height: 2000px; background-color: rgb(255, 0, 0); opacity: 1; animation-name: screenFade; animation-duration: 10s;";
+          document.body.appendChild(elemScreen);
+          setTimeout(clearAllBehindScreen, 10000);
+        }
+        transitionStart = true;
+      };
+    </script>
+  </body>
+</html>
